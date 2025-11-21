@@ -1,0 +1,19 @@
+#!/bin/bash
+
+choice=$(printf "Performance\nBalanced\nPower Saver" | rofi -dmenu -p "Power Profile: ($(powerprofilesctl get))" -theme "~/.config/rofi/menu.rasi")
+
+case "$choice" in
+    "Performance")
+        powerprofilesctl set performance
+        notify-send "Power Profile" "Set power to Performance"
+    ;;
+    "Balanced")
+        powerprofilesctl set balanced
+        notify-send "Power Profile" "Set power to Balanced"
+    ;;
+    "Power Saver")
+        powerprofilesctl set power-saver
+        notify-send "Power Profile" "Set power to Power Saver"
+    ;;
+esac
+
